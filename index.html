@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+v<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -658,6 +658,35 @@ const SLOTS = [
       'Quantized Mechanical'
     ],
     color: '#66bb6a'
+  },
+  {
+    key: 'vocal',
+    label: 'ボーカル',
+    icon: '🎤',
+    hint: '歌声の種類・スタイル・性質',
+    items: [
+      'Female Soprano (高音・クリア)',
+      'Female Alto (低め・温かい)',
+      'Male Tenor (明るい男声)',
+      'Male Baritone (深い男声)',
+      'Male Bass (重厚・低音)',
+      'Androgynous / Gender-neutral',
+      'Child Voice (子供の声)',
+      'Duet (男女ハーモニー)',
+      'Group Chorus (合唱)',
+      'Rap / MC (語り・フロウ)',
+      'Whisper (囁き)',
+      'Falsetto (裏声)',
+      'Raspy / Husky (しゃがれ声)',
+      'Breathy & Airy (息漏れ)',
+      'Operatic (オペラ風)',
+      'Vocoder / Robot Voice',
+      'Auto-Tune Heavy (T-Pain風)',
+      'Harmonized Stack (多重録音)',
+      'No Vocal (インスト)',
+      'Spoken Word (語り)'
+    ],
+    color: '#ab47bc'
   }
 ];
 
@@ -819,8 +848,8 @@ function buildPrompt() {
   const allFilled = SLOTS.every(s => current[s.key]);
   if (!allFilled) return;
 
-  const { genre, mood, tempo, instrument, rhythm, bass, chord, sub_instrument, theme, era, progression, modulation, groove } = current;
-  const prompt = `${genre} track, ${mood.toLowerCase()} atmosphere, ${tempo}, groove: ${groove}, chord progression: ${progression}, modulation: ${modulation}, lead: ${instrument}, rhythm: ${rhythm}, bass: ${bass}, chords: ${chord}, fx: ${sub_instrument}, theme: "${theme}", ${era} sound aesthetic`;
+  const { genre, mood, tempo, instrument, rhythm, bass, chord, sub_instrument, theme, era, progression, modulation, groove, vocal } = current;
+  const prompt = `${genre} track, ${mood.toLowerCase()} atmosphere, ${tempo}, groove: ${groove}, chord progression: ${progression}, modulation: ${modulation}, vocal: ${vocal}, lead: ${instrument}, rhythm: ${rhythm}, bass: ${bass}, chords: ${chord}, fx: ${sub_instrument}, theme: "${theme}", ${era} sound aesthetic`;
 
   document.getElementById('promptText').textContent = prompt;
   document.getElementById('promptText').classList.remove('empty');
